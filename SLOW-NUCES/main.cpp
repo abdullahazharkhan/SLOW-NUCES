@@ -124,24 +124,5 @@ int main()
 		}
         window.display();
     }
-/*
-    Canteen canteen;
-    sf::RenderWindow canteenWindow(sf::VideoMode(800, 600), "Canteen", sf::Style::Default, settings);
-    while (canteenWindow.isOpen()) {
-        sf::Event event;
-        while (canteenWindow.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
-		        canteenWindow.close();
-		    }
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space) {
-			    canteen.takeOrder(event);
-		    }
-        }
-        canteen.displayMenu(canteenWindow);
-        canteen.displayBill(canteenWindow);
-        canteenWindow.display();
-    }*/
-
-
     return EXIT_SUCCESS;
 }
