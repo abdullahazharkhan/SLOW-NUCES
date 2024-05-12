@@ -4,7 +4,7 @@ Bat::Bat(double x, double y)
 {
     batPosition.x = x;
     batPosition.y = y;
-    BatObject.setSize(sf::Vector2f(150, 10));
+    BatObject.setSize(sf::Vector2f(10, 150));
     BatObject.setPosition(batPosition);
 }
 

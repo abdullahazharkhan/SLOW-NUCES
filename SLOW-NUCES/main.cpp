@@ -2,10 +2,18 @@
 #include <chrono>
 #include <SFML/Graphics.hpp>
 #include "Animation.h"
+#include "Bat.h"
+#include "AIBat.h"
+#include "Ball.h"
+#include "Animation.h"
 #include "Character.h"
 #include "Map.h"
 #include "canteen.h"
 #include "library.h"
+
+// declarations
+int WINDOWWIDTH = 1250;
+int WINDOWHEIGHT = 900;
 
 // Total Maps
 Map maps[5];
@@ -61,6 +69,42 @@ int main()
                 }
             }
         }
+
+		if (Game_State == "Pong") {
+            sf::RenderWindow pongWindow(sf::VideoMode(1250, 900), "Pong");
+			pongWindow.setFramerateLimit(60);
+
+            Bat bat(50, (WINDOWHEIGHT / 2 - 75));
+            Ball ball(WINDOWWIDTH / 2 + 50, WINDOWHEIGHT / 2);
+            AIBat aibat(WINDOWWIDTH-50, (WINDOWHEIGHT / 2 - 75));
+
+            while (pongWindow.isOpen())
+            {
+                // Event processing
+                sf::Event event;
+                while (pongWindow.pollEvent(event))
+                {
+                    // Request for closing the window
+                    if (event.type == sf::Event::Closed || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)) {
+                        pongWindow.close();
+                        Game_State = "Inside";
+						mapIndex = 1;
+                    }
+                }
+
+                // Clear the whole window before rendering a new frame
+                pongWindow.clear();
+
+                // Draw some graphical entities
+                pongWindow.draw(bat.getBatObject());
+                pongWindow.draw(ball.getBallObject());
+                pongWindow.draw((aibat.getAIBatObject()));
+
+                // End the current frame and display its contents on screen
+                pongWindow.display();
+            }
+		}
+
         // calculate delta time
         float deltaTime;
         {
@@ -94,28 +138,28 @@ int main()
 			maps[mapIndex].Draw(window);
 			mainGuy.Draw(window);
 		}
-        else if (Game_State == "Pong") {
+        else if (Game_State == "pong") {
 			maps[4].Draw(window);
 		}
         window.display();
     }
-
+/*
     Canteen canteen;
-    sf::RenderWindow window2(sf::VideoMode(800, 600), "Canteen", sf::Style::Default, settings);
-    while (window2.isOpen()) {
+    sf::RenderWindow canteenWindow(sf::VideoMode(800, 600), "Canteen", sf::Style::Default, settings);
+    while (canteenWindow.isOpen()) {
         sf::Event event;
-        while (window2.pollEvent(event)) {
+        while (canteenWindow.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
-		        window2.close();
+		        canteenWindow.close();
 		    }
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space) {
 			    canteen.takeOrder(event);
 		    }
         }
-        canteen.displayMenu(window2);
-        canteen.displayBill(window2);
-        window2.display();
-    }
+        canteen.displayMenu(canteenWindow);
+        canteen.displayBill(canteenWindow);
+        canteenWindow.display();
+    }*/
 
 
     return EXIT_SUCCESS;

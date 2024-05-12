@@ -4,7 +4,7 @@ AIBat::AIBat(double x, double y)
 {
     aiBatPosition.x = x;
     aiBatPosition.y = y;
-    aiBatObject.setSize(sf::Vector2f(150, 10));
+    aiBatObject.setSize(sf::Vector2f(10, 150));
     aiBatObject.setPosition(aiBatPosition);
 }
 

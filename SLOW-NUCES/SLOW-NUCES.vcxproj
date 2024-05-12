@@ -146,6 +146,7 @@
     <ClCompile Include="library.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Paddle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AIBat.h" />
@@ -156,6 +157,7 @@
     <ClInclude Include="Character.h" />
     <ClInclude Include="library.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Paddle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

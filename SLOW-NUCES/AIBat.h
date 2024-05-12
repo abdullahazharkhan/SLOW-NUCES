@@ -19,5 +19,4 @@ public:
     void update();
     void Rebound();
     void AIBatSpeedReverse();
-
 };
