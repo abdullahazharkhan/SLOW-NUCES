@@ -145,6 +145,7 @@
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="library.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Paddle.cpp" />
   </ItemGroup>
@@ -156,6 +157,7 @@
     <ClInclude Include="canteen.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="library.h" />
+    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Paddle.h" />
   </ItemGroup>

@@ -1,15 +1,15 @@
 #include <iostream>
 #include <chrono>
 #include <SFML/Graphics.hpp>
-#include "Animation.h"
-#include "Bat.h"
-#include "AIBat.h"
-#include "Ball.h"
+#include "MainMenu.h"
 #include "Animation.h"
 #include "Character.h"
 #include "Map.h"
 #include "canteen.h"
 #include "library.h"
+#include "Ball.h"
+#include "Bat.h"
+#include "AIBat.h"
 
 // declarations
 int WINDOWWIDTH = 1250;
@@ -24,6 +24,12 @@ Character mainGuy({ 700.0f, 260.0f });
 
 int main()
 {
+    MainMenu mainMenu(1250, 900);
+    bool choice = mainMenu.display();
+    if (!choice) {
+		return EXIT_SUCCESS;
+	}
+
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
     sf::RenderWindow window(sf::VideoMode(1250, 900), "SLOW NUCES", sf::Style::Default, settings);
