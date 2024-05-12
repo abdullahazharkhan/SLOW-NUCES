@@ -77,6 +77,12 @@ int main()
 		if (Game_State == "Pong") {
             Pong::play(WINDOWWIDTH, WINDOWHEIGHT, Game_State, mapIndex);
 		}
+        if (Game_State == "LibraryManagement") {
+
+        }
+        if (Game_State == "CafeMenu") {
+
+		}
 
         // calculate delta time
         float deltaTime;

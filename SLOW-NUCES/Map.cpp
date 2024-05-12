@@ -154,12 +154,21 @@ sf::Vector2f Map::changeState(std::string& GAME_STATE, sf::Vector2f direction, i
 			GAME_STATE = "Cafe", index = 3;
 			return sf::Vector2f(130, 130);
 		}
+		else if (direction.x >= 590 && direction.x <= 920 && direction.y >= 360 && direction.y <= 680) {
+			GAME_STATE = "LibraryManagement", index = 5;
+			return sf::Vector2f(760, 680);
+		}
 	}
 	else if (GAME_STATE == "Cafe") {
 		if (direction.x >= 0 && direction.x <= 130 && direction.y >= 0 && direction.y <= 130) {
 			GAME_STATE = "Inside", index = 1;
 			return sf::Vector2f(550, 200);
 		}
+		else if (direction.x >= 430 && direction.x <= 1140 && direction.y >= 0 && direction.y <= 130) {
+			GAME_STATE = "CafeMenu", index = 6;
+			return sf::Vector2f(660, 130);
+		}
+
 	}
 	else if (GAME_STATE == "Pong") {
 		GAME_STATE = "Inside", index = 1;
