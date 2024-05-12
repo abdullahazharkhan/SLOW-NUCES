@@ -141,9 +141,11 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Bat.cpp" />
+    <ClCompile Include="CafeMenu.cpp" />
     <ClCompile Include="canteen.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="library.cpp" />
+    <ClCompile Include="LibraryManagement.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -155,9 +157,11 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Bat.h" />
+    <ClInclude Include="CafeMenu.h" />
     <ClInclude Include="canteen.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="library.h" />
+    <ClInclude Include="LibraryManagement.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Paddle.h" />

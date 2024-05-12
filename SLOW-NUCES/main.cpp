@@ -8,6 +8,8 @@
 #include "canteen.h"
 #include "library.h"
 #include "Pong.h"
+#include "CafeMenu.h"
+#include "LibraryManagement.h"
 
 // declarations
 int WINDOWWIDTH = 1250;
@@ -78,10 +80,10 @@ int main()
             Pong::play(WINDOWWIDTH, WINDOWHEIGHT, Game_State, mapIndex);
 		}
         if (Game_State == "LibraryManagement") {
-
+            LibraryManagement::Menu(WINDOWWIDTH, WINDOWHEIGHT, Game_State, mapIndex);
         }
         if (Game_State == "CafeMenu") {
-
+            CafeMenu::Show(WINDOWWIDTH, WINDOWHEIGHT, Game_State, mapIndex);
 		}
 
         // calculate delta time
