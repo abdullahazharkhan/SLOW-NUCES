@@ -104,7 +104,7 @@ void Pong::play(int WINDOWWIDTH, int WINDOWHEIGHT, std::string& Game_State, int&
         ss1 << "welcome to table tennis.\n\npress any key to begin\n\nesc to exit";
 
         startmessage.setCharacterSize(50);
-        startmessage.setPosition(WINDOWWIDTH / 2 - 400, WINDOWHEIGHT / 2 - 100);
+        startmessage.setPosition((float)WINDOWWIDTH / 2 - 400, (float)WINDOWHEIGHT / 2 - 100);
         startmessage.setFont(font);
         startmessage.setString(ss1.str());
 

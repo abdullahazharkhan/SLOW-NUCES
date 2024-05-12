@@ -42,8 +42,8 @@ void Ball::passRight(int windowWidth, int windowHeight, int &playerScore) {
     if (ballPosition.x > windowWidth)
     {
         playerScore++;
-        ballPosition.x = windowWidth / 2;
-        ballPosition.y = windowHeight / 2;
+        ballPosition.x = (float)windowWidth / 2;
+        ballPosition.y = (float)windowHeight / 2;
 
         if (rand() % 2 == 1) ballVelocityY *= -1;
         if (rand() % 2 == 2) ballVelocityX *= -1;
@@ -54,8 +54,8 @@ void Ball::passLeft(int windowWidth, int windowHeight, int& aiScore) {
     if (ballPosition.x < 0)
     {
         aiScore++;
-        ballPosition.x = windowWidth / 2;
-        ballPosition.y = windowHeight / 2;
+        ballPosition.x = (float)windowWidth / 2;
+        ballPosition.y = (float)windowHeight / 2;
         if (rand() % 2 == 1) ballVelocityY *= -1;
         if (rand() % 2 == 2) ballVelocityX *= -1;
     }
