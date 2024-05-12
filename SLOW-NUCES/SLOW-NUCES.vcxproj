@@ -141,7 +141,9 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Bat.cpp" />
+    <ClCompile Include="canteen.cpp" />
     <ClCompile Include="Character.cpp" />
+    <ClCompile Include="library.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
   </ItemGroup>
@@ -150,7 +152,9 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Bat.h" />
+    <ClInclude Include="canteen.h" />
     <ClInclude Include="Character.h" />
+    <ClInclude Include="library.h" />
     <ClInclude Include="Map.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
