@@ -14,16 +14,17 @@ void Paddle::update()
     paddleObject.setPosition(paddlePosition);
 }
 
-void Paddle::movePaddleBottom(int)
+void Paddle::movePaddleBottom(int windowHeight)
 {
-	if (getPaddlePosition().y < 900 - 150)
+	if (getPaddlePosition().y < windowHeight - 150)
 		paddlePosition.y += paddleSpeed;
 }
 
 void Paddle::movePaddleTop()
 {
-	if (getPaddlePosition().y > 0)
+    if (getPaddlePosition().y > 0) {
 		paddlePosition.y -= paddleSpeed;
+    }
 }
 
 sf::FloatRect Paddle::getPaddleFloatRect()

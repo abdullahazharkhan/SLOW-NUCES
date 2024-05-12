@@ -7,9 +7,10 @@ class Paddle
 {
 private:
     sf::Vector2f paddlePosition;
-    double paddleSpeed; // need to be set in child class
     sf::RectangleShape paddleObject;
 
+protected:
+    double paddleSpeed; // need to be set in child class
 public:
 	Paddle(double x, double y, double speed);
     sf::Vector2f getPaddlePosition();

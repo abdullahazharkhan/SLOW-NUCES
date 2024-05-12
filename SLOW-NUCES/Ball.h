@@ -6,22 +6,22 @@ class Ball
 {
 private:
 
-    sf::RectangleShape BallObject;
+    sf::CircleShape BallObject;
     sf::Vector2f ballPosition;
 public:
-    sf::RectangleShape getBallObject();
+    sf::CircleShape getBallObject();
     Ball(double x, double y);
     sf::FloatRect getBallFloatRect();
     void reboundSides(int windowWidth);
-    void passTop(int windowWidth, int windowHeight, int& batscore);
+    void passRight(int windowWidth, int windowHeight, int& playerScore);
     sf::Vector2f getBallPosition;
-    void passBottom(int windowWidth, int windowHeight, int& lives);
+    void passLeft(int windowWidth, int windowHeight, int& aiScore);
     void intersectBat();
     void intersectAIBat();
     void reboundBatorAI();
     void update();
-    double ballVelocityX = 0.5f;
-    double ballVelocityY = 0.5f;
+    double ballVelocityX = 5.0f;
+    double ballVelocityY = 5.0f;
     void stop();
     void go();
 };
