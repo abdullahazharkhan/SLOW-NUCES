@@ -5,8 +5,6 @@
 #include "Animation.h"
 #include "Character.h"
 #include "Map.h"
-#include "canteen.h"
-#include "library.h"
 #include "Pong.h"
 #include "CafeMenu.h"
 #include "LibraryManagement.h"
