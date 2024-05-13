@@ -46,6 +46,18 @@ void CafeMenu::Show(int WINDOWWIDTH, int WINDOWHEIGHT, std::string& Game_State, 
 	bounds = instruction.getLocalBounds();
 	instruction.setOrigin(-bounds.left + bounds.width / 2.0f, -bounds.top + bounds.height / 2.0f);
 	instruction.setPosition(1250 / 2.0, 900 - 80.0f);
+	sf::Text lookAtMenu;
+	lookAtMenu.setFont(font);
+	lookAtMenu.setString("Press M to look at menu");
+	lookAtMenu.setCharacterSize(30u);
+	lookAtMenu.setFillColor(sf::Color::Black);
+	lookAtMenu.setPosition(100.0f, 700.f);
+	sf::Text lookAtBill;
+	lookAtBill.setFont(font);
+	lookAtBill.setString("Press M to look at bill");
+	lookAtBill.setCharacterSize(30u);
+	lookAtBill.setFillColor(sf::Color::Black);
+	lookAtBill.setPosition(100.0f, 700.f);
 
 
 	// food items
@@ -62,7 +74,7 @@ void CafeMenu::Show(int WINDOWWIDTH, int WINDOWHEIGHT, std::string& Game_State, 
 		foodItems[1].first.setTextureRect(sf::IntRect(1 * 34, 3 * 34, 34, 34));
 		foodItems[1].second = 120.0f;
 		foodItems[2].first.setTextureRect(sf::IntRect(2 * 34, 3 * 34, 34, 34));
-		foodItems[2].second = 60.5f;
+		foodItems[2].second = 60.0f;
 		foodItems[3].first.setTextureRect(sf::IntRect(1 * 34, 4 * 34, 34, 34));
 		foodItems[3].second = 50.0f;
 		foodItems[4].first.setTextureRect(sf::IntRect(5 * 34, 3 * 34, 34, 34));
@@ -112,54 +124,72 @@ void CafeMenu::Show(int WINDOWWIDTH, int WINDOWHEIGHT, std::string& Game_State, 
 				return;
 			}
 
-			if (cafeEvent.type == sf::Event::KeyPressed && cafeEvent.key.code == sf::Keyboard::Space) {
+			if (cafeEvent.type == sf::Event::KeyPressed && gameState == "inMenu" && (cafeEvent.key.code == sf::Keyboard::Space || cafeEvent.key.code == sf::Keyboard::M)) {
 				gameState = "inBill";
+			}
+			else if(gameState == "inBill" && cafeEvent.type == sf::Event::KeyPressed){
+				if (cafeEvent.key.code == sf::Keyboard::M) 
+					gameState = "inMenu";
+				else if (cafeEvent.key.code == sf::Keyboard::Enter || cafeEvent.key.code == sf::Keyboard::Space) {
+					Game_State = "Cafe";
+					mapIndex = 3;
+					cafeWindow.close();
+					return;
+				}
 			}
 
 			if (((cafeEvent.type == cafeEvent.KeyPressed) && cafeEvent.key.code == sf::Keyboard::A))
 			{
+				gameState = "inBill";
 				purchasedFood[0].first++;
 				purchasedFood[0].second += foodItems[0].second;
 				totalBill += foodItems[0].second;
 			}
-			if (((cafeEvent.type == cafeEvent.KeyPressed) && cafeEvent.key.code == sf::Keyboard::B))
+			else if (((cafeEvent.type == cafeEvent.KeyPressed) && cafeEvent.key.code == sf::Keyboard::B))
 			{
+				gameState = "inBill";
 				purchasedFood[1].first++;
 				purchasedFood[1].second += foodItems[1].second;
 				totalBill += foodItems[1].second;
 			}
-			if (((cafeEvent.type == cafeEvent.KeyPressed) && cafeEvent.key.code == sf::Keyboard::C))
+			else if (((cafeEvent.type == cafeEvent.KeyPressed) && cafeEvent.key.code == sf::Keyboard::C))
 			{
+				gameState = "inBill";
 				purchasedFood[2].first++;
 				purchasedFood[2].second += foodItems[2].second;
 				totalBill += foodItems[2].second;
 			}
-			if (((cafeEvent.type == cafeEvent.KeyPressed) && cafeEvent.key.code == sf::Keyboard::D))
+			else if (((cafeEvent.type == cafeEvent.KeyPressed) && cafeEvent.key.code == sf::Keyboard::D))
 			{
+				gameState = "inBill";
 				purchasedFood[3].first++;
 				purchasedFood[3].second += foodItems[3].second;
 				totalBill += foodItems[3].second;
 			}
-			if (((cafeEvent.type == cafeEvent.KeyPressed) && cafeEvent.key.code == sf::Keyboard::E))
+			else if (((cafeEvent.type == cafeEvent.KeyPressed) && cafeEvent.key.code == sf::Keyboard::E))
 			{
+				gameState = "inBill";
 				purchasedFood[4].first++;
 				purchasedFood[4].second += foodItems[4].second;
 				totalBill += foodItems[4].second;
 			}
-			if (((cafeEvent.type == cafeEvent.KeyPressed) && cafeEvent.key.code == sf::Keyboard::F))
+			else if (((cafeEvent.type == cafeEvent.KeyPressed) && cafeEvent.key.code == sf::Keyboard::F))
 			{
+				gameState = "inBill";
 				purchasedFood[5].first++;
 				purchasedFood[5].second += foodItems[5].second;
 				totalBill += foodItems[5].second;
 			}
-			if (((cafeEvent.type == cafeEvent.KeyPressed) && cafeEvent.key.code == sf::Keyboard::G))
+			else if (((cafeEvent.type == cafeEvent.KeyPressed) && cafeEvent.key.code == sf::Keyboard::G))
 			{
+				gameState = "inBill";
 				purchasedFood[6].first++;
 				purchasedFood[6].second += foodItems[6].second;
 				totalBill += foodItems[6].second;
 			}
-			if (((cafeEvent.type == cafeEvent.KeyPressed) && cafeEvent.key.code == sf::Keyboard::H))
+			else if (((cafeEvent.type == cafeEvent.KeyPressed) && cafeEvent.key.code == sf::Keyboard::H))
 			{
+				gameState = "inBill";
 				purchasedFood[7].first++;
 				purchasedFood[7].second += foodItems[7].second;
 				totalBill += foodItems[7].second;
@@ -178,6 +208,7 @@ void CafeMenu::Show(int WINDOWWIDTH, int WINDOWHEIGHT, std::string& Game_State, 
 				foodItemsPrice[i].setPosition(600, 165 + i * 82);
 				cafeWindow.draw(foodItemsPrice[i]);
 			}
+			cafeWindow.draw(lookAtBill);
 			cafeWindow.draw(instruction);
 		}
 		else if (gameState == "inBill") {
@@ -204,6 +235,7 @@ void CafeMenu::Show(int WINDOWWIDTH, int WINDOWHEIGHT, std::string& Game_State, 
 			total.setString(s.str());
 			total.setPosition(900, 900-100.0f);
 			cafeWindow.draw(total);
+			cafeWindow.draw(lookAtMenu);
 		}
 		cafeWindow.display();
 	}	

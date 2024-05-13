@@ -17,7 +17,7 @@ int WINDOWHEIGHT = 900;
 
 // Total Maps
 Map maps[5];
-int mapIndex = 4; 
+int mapIndex = 0; 
 
 // main guy
 Character mainGuy({ 700.0f, 260.0f });
@@ -36,7 +36,7 @@ int main()
     window.setFramerateLimit(60);
     
      // Current Map
-    std::string Game_State = "Pong";
+    std::string Game_State = "Outside";
 
     maps[0].Load("Outside");
     maps[1].Load("Inside");
@@ -86,16 +86,16 @@ int main()
         sf::Vector2f direction = { 0.0f, 0.0f };
         bool moved = false;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-            direction.y -= 3.0f, moved = true;
+            direction.y -= 1.0f, moved = true;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-            direction.x += 3.0f, moved = true;
+            direction.x += 1.0f, moved = true;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-            direction.y += 3.0f, moved = true;
+            direction.y += 1.0f, moved = true;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-            direction.x -= 3.0f, moved = true;
+            direction.x -= 1.0f, moved = true;
         }
         if (moved) {
             Map::updateCharacterPosition(Game_State, mainGuy.GetPosition(), direction);
