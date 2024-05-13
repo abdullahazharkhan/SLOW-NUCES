@@ -36,12 +36,6 @@
     <ClCompile Include="AIBat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="library.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="canteen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Paddle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -78,12 +72,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AIBat.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="library.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="canteen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Paddle.h">

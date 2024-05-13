@@ -9,63 +9,64 @@ Map::~Map()
 }
 void Map::Load(std::string state)
 {
-	if (state == "Outside") {
-		if (backgroundTexture.loadFromFile("./Assets/Sprites/mpBuilding.png"))
-		{
-			background.setTexture(backgroundTexture);
+	try {
+		if (state == "Outside") {
+			if (backgroundTexture.loadFromFile("./Assets/Sprites/mpBuilding.png"))
+			{
+				background.setTexture(backgroundTexture);
+			}
+			else
+			{
+				throw(1);
+			}
 		}
-		else
-		{
-			std::cout << "Failed to load tileset" << std::endl;
+		else if (state == "Inside") {
+			if (backgroundTexture.loadFromFile("./Assets/Sprites/inside.png"))
+			{
+				background.setTexture(backgroundTexture);
+			}
+			else
+			{
+				throw(1);
+			}
+		}
+		else if (state == "Library") {
+			if (backgroundTexture.loadFromFile("./Assets/Sprites/library.png"))
+			{
+				background.setTexture(backgroundTexture);
+			}
+			else
+			{
+				throw(1);
+			}
+		}
+		else if (state == "Cafe") {
+			if (backgroundTexture.loadFromFile("./Assets/Sprites/Cafe.png"))
+			{
+				background.setTexture(backgroundTexture);
+			}
+			else
+			{
+				throw(1);
+			}
+		}
+		else if (state == "Pong") {
+			if (backgroundTexture.loadFromFile("./Assets/Sprites/pong.png"))
+			{
+				background.setTexture(backgroundTexture);
+			}
+			else
+			{
+				throw(1);
+			}
+		}
+		else {
+			std::cout << "Invalid state" << std::endl;
 			exit(EXIT_FAILURE);
 		}
 	}
-	else if (state == "Inside") {
-		if (backgroundTexture.loadFromFile("./Assets/Sprites/inside.png"))
-		{
-			background.setTexture(backgroundTexture);
-		}
-		else
-		{
-			std::cout << "Failed to load tileset" << std::endl;
-			exit(EXIT_FAILURE);
-		}
-	}
-	else if (state == "Library") {
-		if (backgroundTexture.loadFromFile("./Assets/Sprites/library.png"))
-		{
-			background.setTexture(backgroundTexture);
-		}
-		else
-		{
-			std::cout << "Failed to load tileset" << std::endl;
-			exit(EXIT_FAILURE);
-		}
-	}
-	else if (state == "Cafe") {
-		if (backgroundTexture.loadFromFile("./Assets/Sprites/Cafe.png"))
-		{
-			background.setTexture(backgroundTexture);
-		}
-		else
-		{
-			std::cout << "Failed to load tileset" << std::endl;
-			exit(EXIT_FAILURE);
-		}
-	}
-	else if (state == "Pong") {
-		if (backgroundTexture.loadFromFile("./Assets/Sprites/pong.png"))
-		{
-			background.setTexture(backgroundTexture);
-		}
-		else
-		{
-			std::cout << "Failed to load tileset" << std::endl;
-			exit(EXIT_FAILURE);
-		}
-	}
-	else {
-		std::cout << "Invalid state" << std::endl;
+	catch (int) {
+		std::cout << "Failed to load Map";
 		exit(EXIT_FAILURE);
 	}
 }
