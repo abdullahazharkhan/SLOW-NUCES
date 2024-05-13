@@ -4,8 +4,8 @@
 class MainMenu
 {
 	sf::RenderWindow window;
-	sf::Sprite background, background2;
-	sf::Texture backgroundTexture, backgroundTexture2;
+	sf::Sprite background, background2, controls;
+	sf::Texture backgroundTexture, backgroundTexture2, controlsTexture;
 	sf::Font Blox, MineCraft;
 
 	public:
