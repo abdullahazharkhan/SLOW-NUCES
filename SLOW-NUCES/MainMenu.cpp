@@ -31,6 +31,24 @@ MainMenu::MainMenu(int width, int height)
 		std::cout << "Failed to load tileset" << std::endl;
 		exit(EXIT_FAILURE);
 	}
+	if (backgroundTextureNew.loadFromFile("./Assets/Sprites/MainScreenCharacter.png"))
+	{
+		backgroundNew.setTexture(backgroundTextureNew);
+	}
+	else
+	{
+		std::cout << "Failed to load tileset" << std::endl;
+		exit(EXIT_FAILURE);
+	}
+	if (controlsTextureNew.loadFromFile("./Assets/Sprites/MainScreenCharacterControls.png"))
+	{
+		controlsNew.setTexture(controlsTextureNew);
+	}
+	else
+	{
+		std::cout << "Failed to load tileset" << std::endl;
+		exit(EXIT_FAILURE);
+	}
 
 	if (!MineCraft.loadFromFile("./Assets/Fonts/Quartz.ttf"))
 	{
@@ -116,6 +134,45 @@ bool MainMenu::display() {
 		else {
 			window.draw(background);
 			window.draw(controls);
+		}
+		window.display();
+	}
+	return choice;
+}
+bool MainMenu::display2() {
+	bool choice = false;
+
+	int type = 1;
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event)) {
+			if (event.type == sf::Event::Closed)
+				window.close();
+			else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
+				if (type == 1)
+					window.close();
+				else if (type == 2)
+					type = 1;
+			}
+			else if (event.type == sf::Event::KeyPressed && type == 2) {
+				type = 1;
+			}
+			else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space) {
+				choice = true;
+				window.close();
+			}
+			else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::C) {
+				type = 2;
+			}
+		}
+		window.clear();
+		if (type == 1) {
+			window.draw(backgroundNew);
+		}
+		else {
+			window.draw(controlsNew);
 		}
 		window.display();
 	}

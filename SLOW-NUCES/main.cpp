@@ -23,7 +23,7 @@ Character mainGuy({ 700.0f, 260.0f });
 int main()
 {
     MainMenu mainMenu(1250, 900);
-    bool choice = mainMenu.display();
+    bool choice = mainMenu.display2();
     if (!choice) {
 		return EXIT_SUCCESS;
 	}
