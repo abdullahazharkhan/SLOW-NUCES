@@ -16,7 +16,7 @@ void CafeMenu::Show(int WINDOWWIDTH, int WINDOWHEIGHT, std::string& Game_State, 
 	// background
 	sf::Sprite cafeBackground;
 	sf::Texture cafeBackgroundTexture;
-	if (cafeBackgroundTexture.loadFromFile("./Assets/Sprites/cafeBlurred.png")) {
+	if (cafeBackgroundTexture.loadFromFile("./Assets/Sprites/CafeBlurred3.png")) {
 		cafeBackground.setTexture(cafeBackgroundTexture);
 	}
 	else {
@@ -27,7 +27,7 @@ void CafeMenu::Show(int WINDOWWIDTH, int WINDOWHEIGHT, std::string& Game_State, 
 	//
 	sf::FloatRect bounds;
 	sf::Font font;
-	if (!font.loadFromFile("./Assets/Fonts/MineCraft.ttf")) {
+	if (!font.loadFromFile("./Assets/Fonts/RobotoBoldCondensed.ttf")) {
 		std::cout << "error loading font" << std::endl;
 	}
 	sf::Text title;

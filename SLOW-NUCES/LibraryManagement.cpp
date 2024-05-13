@@ -13,7 +13,7 @@ void LibraryManagement::Menu(int WINDOWWIDTH, int WINDOWHEIGHT, std::string& Gam
     // background
     sf::Sprite libBackground;
     sf::Texture libBackgroundTexture;
-    if (libBackgroundTexture.loadFromFile("./Assets/Sprites/libraryBlurred.png")) {
+    if (libBackgroundTexture.loadFromFile("./Assets/Sprites/libraryBlurred2.png")) {
         libBackground.setTexture(libBackgroundTexture);
     }
     else {
@@ -71,18 +71,26 @@ void LibraryManagement::Menu(int WINDOWWIDTH, int WINDOWHEIGHT, std::string& Gam
         exit(EXIT_FAILURE);
     }
 
-    sf::Text text;
+    sf::Text text, text2;
     sf::Font font;
-    if (!font.loadFromFile("./Assets/Fonts/MineCraft.ttf")) {
+    if (!font.loadFromFile("./Assets/Fonts/impact.ttf")) {
         std::cout << "error loading font" << std::endl;
     }
     std::stringstream ss;
-    ss << "Press book to issue it.";
+    ss << "Click book to issue it.";
     text.setCharacterSize(50);;
-    text.setPosition((float)WINDOWWIDTH / 2 - 400, (float)WINDOWHEIGHT - 200);
+    text.setPosition((float)WINDOWWIDTH / 2 - 200, (float)75);
     text.setFont(font);
     text.setFillColor(sf::Color::Black);
     text.setString(ss.str());
+
+    std::stringstream enter;
+    enter << "Press Any key to continue.";
+    text2.setCharacterSize(40);;
+    text2.setPosition((float)WINDOWWIDTH / 2 - 400, (float)675);
+    text2.setFont(font);
+    text2.setFillColor(sf::Color::Black);
+    text2.setString(enter.str());
 
     sf::Text iBooks;
     std::stringstream ss2;
@@ -106,15 +114,26 @@ void LibraryManagement::Menu(int WINDOWWIDTH, int WINDOWHEIGHT, std::string& Gam
 
     std::vector<std::pair<std::string, std::string>> issuedBooks(4);
     std::vector<sf::Text> issuedBooksTexts(issuedBooks.size());
+    int menu = 1;
 
     while (LibraryWindow.isOpen())
     {
         // Event processing
         sf::Event event;
-        while (LibraryWindow.pollEvent(event))
+        while (LibraryWindow.pollEvent(event) || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape))
         {
             // Request for closing the window
-            if (event.type == sf::Event::Closed || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)) {
+            if (event.type == sf::Event::Closed) {
+                Game_State = "Library";
+                mapIndex = 2;
+
+                LibraryWindow.close();
+                return;
+            }
+            else if (event.type == sf::Event::KeyPressed && menu == 1) {
+                menu = 2;
+            }
+            else if (event.type == sf::Event::KeyPressed && menu == 2) {
                 Game_State = "Library";
                 mapIndex = 2;
 
@@ -174,25 +193,38 @@ void LibraryManagement::Menu(int WINDOWWIDTH, int WINDOWHEIGHT, std::string& Gam
 
         LibraryWindow.clear();
         LibraryWindow.draw(libBackground);
-        for (int i = 0; i < books.size(); ++i) {
-            if (books[i].second == true) {
-			    books[i].first.setPosition(i * 300, 100);
-			    LibraryWindow.draw(books[i].first);
+        if (menu == 1) {
+            for (int i = 0; i < books.size(); ++i) {
+                if (books[i].second == true) {
+			        books[i].first.setPosition(i * 300, 150);
+			        LibraryWindow.draw(books[i].first);
+                }
+            }
+            LibraryWindow.draw(text);
+            LibraryWindow.draw(text2);
+            for (int i = 0; i < booksInfoTexts.size(); ++i) {
+                if (booksInfoTexts[i].second == true) {
+                    booksInfoTexts[i].first.setPosition(60 + i * 300, 550);
+                    LibraryWindow.draw(booksInfoTexts[i].first);
+                }
+            }
+            LibraryWindow.draw(iBooks);
+            for (int i = 0; i < issuedBooksTexts.size(); ++i) {
+                issuedBooksTexts[i].setPosition(WINDOWWIDTH-200, 700 + i*25);
+                LibraryWindow.draw(issuedBooksTexts[i]);
             }
         }
-        LibraryWindow.draw(text);
-        for (int i = 0; i < booksInfoTexts.size(); ++i) {
-            if (booksInfoTexts[i].second == true) {
-                booksInfoTexts[i].first.setPosition(60 + i * 300, 500);
-                LibraryWindow.draw(booksInfoTexts[i].first);
-            }
-        }
-        LibraryWindow.draw(iBooks);
-        for (int i = 0; i < issuedBooksTexts.size(); ++i) {
-            issuedBooksTexts[i].setPosition(WINDOWWIDTH-200, 700 + i*25);
-            LibraryWindow.draw(issuedBooksTexts[i]);
-        }
+        else if(menu == 2) {
+			text.setString("Books Issued:");
+			text.setPosition((float)WINDOWWIDTH / 3, (float)250);
+			LibraryWindow.draw(text);
+            LibraryWindow.draw(text2);
+			for (int i = 0; i < issuedBooksTexts.size(); ++i) {
+				issuedBooksTexts[i].setPosition(WINDOWWIDTH / 3, 320 + i * 40);
+                issuedBooksTexts[i].setCharacterSize(30);
+				LibraryWindow.draw(issuedBooksTexts[i]);
+			}
+		}
         LibraryWindow.display();
     }
 }
-

@@ -40,16 +40,10 @@ void Pong::play(int WINDOWWIDTH, int WINDOWHEIGHT, std::string& Game_State, int&
                 return;
             }
         }
-
-        if (((pongEvent.type == pongEvent.KeyPressed) && pongEvent.key.code == sf::Keyboard::Up))
-        {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
             bat.movePaddleTop();
-        }
-
-        if (((pongEvent.type == pongEvent.KeyPressed) && pongEvent.key.code == sf::Keyboard::Down))
-        {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
             bat.movePaddleBottom(WINDOWHEIGHT);
-        }
 
         ball.reboundSides(WINDOWHEIGHT);
         ball.passRight(WINDOWWIDTH, WINDOWHEIGHT, playerScore);
@@ -85,10 +79,10 @@ void Pong::play(int WINDOWWIDTH, int WINDOWHEIGHT, std::string& Game_State, int&
         sf::Text scores;
         std::stringstream ss;
 
-        ss << "your score: " << playerScore << "       AI's score: " << aiScore;
+        ss << "  Your score: " << playerScore << "       AI's score: " << aiScore;
 
         sf::Font font;
-        if (!font.loadFromFile("./Assets/Fonts/MineCraft.ttf")) {
+        if (!font.loadFromFile("./Assets/Fonts/RobotoBoldCondensed.ttf")) {
             std::cout << "error loading font" << std::endl;
         }
 
@@ -101,7 +95,7 @@ void Pong::play(int WINDOWWIDTH, int WINDOWHEIGHT, std::string& Game_State, int&
         // start message
         sf::Text startmessage;
         std::stringstream ss1;
-        ss1 << "Youre in table tennis court.\n\npress any key to begin\n\nesc to exit";
+        ss1 << "You are in table tennis court.\n\nPress any key to begin\n\nEsc to exit";
 
         startmessage.setCharacterSize(50);
         startmessage.setPosition((float)WINDOWWIDTH / 2 - 400, (float)WINDOWHEIGHT / 2 - 100);

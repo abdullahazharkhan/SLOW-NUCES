@@ -17,7 +17,7 @@ int WINDOWHEIGHT = 900;
 
 // Total Maps
 Map maps[5];
-int mapIndex = 0; 
+int mapIndex = 4; 
 
 // main guy
 Character mainGuy({ 700.0f, 260.0f });
@@ -36,7 +36,7 @@ int main()
     window.setFramerateLimit(60);
     
      // Current Map
-    std::string Game_State = "Outside";
+    std::string Game_State = "Pong";
 
     maps[0].Load("Outside");
     maps[1].Load("Inside");
@@ -76,16 +76,6 @@ int main()
             }
         }
 
-		if (Game_State == "Pong") {
-            Pong::play(WINDOWWIDTH, WINDOWHEIGHT, Game_State, mapIndex);
-		}
-        if (Game_State == "LibraryManagement") {
-            LibraryManagement::Menu(WINDOWWIDTH, WINDOWHEIGHT, Game_State, mapIndex);
-        }
-        if (Game_State == "CafeMenu") {
-            CafeMenu::Show(WINDOWWIDTH, WINDOWHEIGHT, Game_State, mapIndex);
-		}
-
         // calculate delta time
         float deltaTime;
         {
@@ -96,16 +86,16 @@ int main()
         sf::Vector2f direction = { 0.0f, 0.0f };
         bool moved = false;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-            direction.y -= 1.0f, moved = true;
+            direction.y -= 3.0f, moved = true;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-            direction.x += 1.0f, moved = true;
+            direction.x += 3.0f, moved = true;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-            direction.y += 1.0f, moved = true;
+            direction.y += 3.0f, moved = true;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-            direction.x -= 1.0f, moved = true;
+            direction.x -= 3.0f, moved = true;
         }
         if (moved) {
             Map::updateCharacterPosition(Game_State, mainGuy.GetPosition(), direction);
@@ -119,8 +109,14 @@ int main()
 			maps[mapIndex].Draw(window);
 			mainGuy.Draw(window);
 		}
-        else if (Game_State == "pong") {
-			maps[4].Draw(window);
+		else if (Game_State == "Pong") {
+            Pong::play(WINDOWWIDTH, WINDOWHEIGHT, Game_State, mapIndex);
+		}
+        else if (Game_State == "LibraryManagement") {
+            LibraryManagement::Menu(WINDOWWIDTH, WINDOWHEIGHT, Game_State, mapIndex);
+        }
+        else if (Game_State == "CafeMenu") {
+            CafeMenu::Show(WINDOWWIDTH, WINDOWHEIGHT, Game_State, mapIndex);
 		}
         window.display();
     }
