@@ -79,10 +79,10 @@ void Pong::play(int WINDOWWIDTH, int WINDOWHEIGHT, std::string& Game_State, int&
         sf::Text scores;
         std::stringstream ss;
 
-        ss << "  Your score: " << playerScore << "       AI's score: " << aiScore;
+        ss << "  Your score: " << playerScore << "                          AI's score: " << aiScore;
 
         sf::Font font;
-        if (!font.loadFromFile("./Assets/Fonts/RobotoBoldCondensed.ttf")) {
+        if (!font.loadFromFile("./Assets/Fonts/GROBOLD.ttf")) {
             std::cout << "error loading font" << std::endl;
         }
 

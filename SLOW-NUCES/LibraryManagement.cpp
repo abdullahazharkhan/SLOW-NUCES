@@ -103,7 +103,7 @@ void LibraryManagement::Menu(int WINDOWWIDTH, int WINDOWHEIGHT, std::string& Gam
 
     sf::Text text, text2;
     sf::Font font;
-    if (!font.loadFromFile("./Assets/Fonts/impact.ttf")) {
+    if (!font.loadFromFile("./Assets/Fonts/GROBOLD.ttf")) {
         std::cout << "error loading font" << std::endl;
     }
     std::stringstream ss;
