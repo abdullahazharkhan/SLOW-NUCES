@@ -3,7 +3,7 @@
 ---
 ### Introducing Character and SLOW-NUCES
 We have a main character, let's call it Junaid. 
-Whenever the game window renders Junaid finds himself in the mulitpurpose building's ground alone with you. On the ground, we have a futsal court, a badminton court (which are not functional in this version), and ofcourse, the multipurpose building itself. 
+Whenever the game window renders Junaid finds himself in the mulitpurpose building's ground alone with you. On the ground, we have a futsal court, a badminton court (which are not functional in this version), and of course, the multipurpose building itself. 
 
 ![MultipurposeOutside](Images/MultipurposeOutside.PNG)
 
@@ -28,7 +28,8 @@ After exploring table tennis and the library, Junaid heads upstairs to the cafet
 
 Junaid then finds himself back inside the multipurpose building, and now there is nothing to explore except the auditorium, which is not functional, so he exits the building. Junaid realizes that he has exams next week and has missed all of his scheduled classes just to give you a tour of his university, SLOW-NUCES.
 
-#### Designs: [@sushisajid](https://github.com/sushisajid)
-
----
 ##### Junaid also claims that he can get motivation to study for his exams if someone stars the repository. Give it a star so that Junaid can find the motivation needed to prepare for his exams.
+---
+
+
+#### Designs: [@sushisajid](https://github.com/sushisajid) && [@sameedjk10](https://github.com/sameedjk10)
